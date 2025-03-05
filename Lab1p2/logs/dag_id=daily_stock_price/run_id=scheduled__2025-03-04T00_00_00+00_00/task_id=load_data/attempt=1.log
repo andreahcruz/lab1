@@ -1,0 +1,30 @@
+[2025-03-05T23:18:49.749+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-03-05T23:18:49.754+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: daily_stock_price.load_data scheduled__2025-03-04T00:00:00+00:00 [queued]>
+[2025-03-05T23:18:49.757+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: daily_stock_price.load_data scheduled__2025-03-04T00:00:00+00:00 [queued]>
+[2025-03-05T23:18:49.757+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 2
+[2025-03-05T23:18:49.760+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): load_data> on 2025-03-04 00:00:00+00:00
+[2025-03-05T23:18:49.765+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'daily_stock_price', 'load_data', 'scheduled__2025-03-04T00:00:00+00:00', '--job-id', '65', '--raw', '--subdir', 'DAGS_FOLDER/daily_stock_price.py', '--cfg-path', '/tmp/tmpdkpyikhc']
+[2025-03-05T23:18:49.766+0000] {standard_task_runner.py:105} INFO - Job 65: Subtask load_data
+[2025-03-05T23:18:49.766+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=346) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-03-05T23:18:49.767+0000] {standard_task_runner.py:72} INFO - Started process 349 to run task
+[2025-03-05T23:18:49.785+0000] {task_command.py:467} INFO - Running <TaskInstance: daily_stock_price.load_data scheduled__2025-03-04T00:00:00+00:00 [running]> on host 01071d25f042
+[2025-03-05T23:18:49.812+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='daily_stock_price' AIRFLOW_CTX_TASK_ID='load_data' AIRFLOW_CTX_EXECUTION_DATE='2025-03-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-04T00:00:00+00:00'
+[2025-03-05T23:18:49.812+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-03-05T23:18:49.818+0000] {connection.py:413} INFO - Snowflake Connector for Python Version: 3.12.1, Python Version: 3.12.5, Platform: Linux-6.10.14-linuxkit-aarch64-with-glibc2.36
+[2025-03-05T23:18:49.818+0000] {connection.py:1196} INFO - Connecting to GLOBAL Snowflake domain
+[2025-03-05T23:18:49.818+0000] {connection.py:1277} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2025-03-05T23:18:50.576+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-03-05T23:18:50.579+0000] {logging_mixin.py:190} INFO - YF.download() has changed argument auto_adjust default to True
+[2025-03-05T23:18:51.241+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-03-05T23:18:52.206+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-03-05T23:18:52.207+0000] {logging_mixin.py:190} INFO - Inserted new rows.
+[2025-03-05T23:18:52.445+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-03-05T23:18:52.861+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-03-05T23:18:53.797+0000] {cursor.py:1156} INFO - Number of results in first chunk: 1
+[2025-03-05T23:18:53.797+0000] {logging_mixin.py:190} INFO - Inserted new rows.
+[2025-03-05T23:18:53.798+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-03-05T23:18:53.806+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-03-05T23:18:53.806+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=daily_stock_price, task_id=load_data, run_id=scheduled__2025-03-04T00:00:00+00:00, execution_date=20250304T000000, start_date=20250305T231849, end_date=20250305T231853
+[2025-03-05T23:18:53.848+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-03-05T23:18:53.865+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-03-05T23:18:53.867+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
