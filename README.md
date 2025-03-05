@@ -15,6 +15,8 @@ docker-compose up -d
 Wait a bit then you will need to use http://localhost:8080/home (make sure its not already being used by anything else!)
 
 Open up snowflake and run every sql line (in the sql file) up until the select statements aka just create db schema and table;
+Then press the play button on the right hand side 
+![image](https://github.com/user-attachments/assets/6510814d-14eb-43d5-b7cd-bb90f3f61f1f)
 
 Then run the select statements in the sql file. 
 
