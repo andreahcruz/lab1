@@ -12,7 +12,7 @@ SNOWFLAKE_USER=yourown
 SNOWFLAKE_PASSWORD=yourown
 SNOWFLAKE_ACCOUNT=yourown
 
-(obviously instead of yourown please put your own creditials)
+(instead of yourown please put your own creditials)
 Snowflake account can be found here when you log in 
 
 ![image](https://github.com/user-attachments/assets/5d69c23a-34e0-41dc-8657-5ddca3dc01a2)
@@ -27,7 +27,7 @@ docker-compose up -d
 
 Wait a bit then you will need to use http://localhost:8080/home (make sure its not already being used by anything else!)
 
-Open up snowflake and run every sql line (in the sql file) up until the select statements aka just create db schema and table;
+Open up snowflake and run every sql line (in the snowflakesql file please refer to it for clarity) up until the select statements aka just create db schema and table;
 
 CREATE DATABASE FINANCE_DB;
 CREATE SCHEMA ANALYTICS;
@@ -49,5 +49,5 @@ CREATE TABLE IF NOT EXISTS FINANCE_DB.ANALYTICS.stock_prices (
 Then press the play button on the right hand side 
 ![image](https://github.com/user-attachments/assets/6510814d-14eb-43d5-b7cd-bb90f3f61f1f)
 
-Then run the select statements in the sql file. 
+Then run the select statements in the sql file (aka the rest). 
 
