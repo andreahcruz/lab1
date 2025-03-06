@@ -5,6 +5,7 @@ Steps to run code:
 
 Make sure to run the code in its own folder and not a folder inside a folder; Should look like this 
 <img width="337" alt="image" src="https://github.com/user-attachments/assets/1044147f-4b9c-490e-92b1-5ef80f7beeb6" />
+<img width="1240" alt="image" src="https://github.com/user-attachments/assets/db26fccb-3a13-4907-841b-964fc1b166ed" />
 
 You also want to create your own .env as shown in the image above
 
