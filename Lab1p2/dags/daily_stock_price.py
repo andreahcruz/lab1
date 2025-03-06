@@ -45,8 +45,8 @@ def save_stock_price_as_file(symbol, start_date, file_path):
     data.rename(columns={
         "Date": "date",
         "Open": "open",
-        "High": "max",   # changed to match Snowflake table
-        "Low": "min",    # changed to match Snowflake table
+        "High": "max",   
+        "Low": "min",    
         "Close": "close",
         "Volume": "volume"
     }, inplace=True)
