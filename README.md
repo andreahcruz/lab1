@@ -18,6 +18,9 @@ Snowflake account can be found here when you log in
 
 ![image](https://github.com/user-attachments/assets/5d69c23a-34e0-41dc-8657-5ddca3dc01a2)
 
+<img width="1683" alt="image" src="https://github.com/user-attachments/assets/67261ddc-f045-4aec-ba00-f94d274a900a" />
+
+
 You use the code provided that I lined out and put that code in SNOWFLAKE_ACCOUNT=
 
 In vscode terminal run:
