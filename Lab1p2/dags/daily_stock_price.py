@@ -19,8 +19,8 @@ default_args = {
 def get_scalar(val):
     return val.item() if hasattr(val, "item") else val
 
-# fetch last 180 days
-def fetch_and_load_data(**context):
+# fetch and load last 180 days
+def fl_data(**context):
     # snowflake connection
     conn = snowflake.connector.connect(
         user=os.getenv('SNOWFLAKE_USER'),
@@ -42,15 +42,15 @@ def fetch_and_load_data(**context):
             WHERE stock_symbol = %s
         """, (symbol,))
         result = cursor.fetchone()
-        latest_date_in_db = result[0]  
+        latest_date = result[0]  
 
         # if table is empty fetch last 180 days
-        if latest_date_in_db is None:
+        if latest_date is None:
             df = yf.download(symbol, period="180d", interval="1d", progress=False)
 
         # fetch new data from the day after latest date 
         else:
-            start_date = latest_date_in_db + timedelta(days=1)
+            start_date = latest_date + timedelta(days=1)
             end_date = datetime.today()
             df = yf.download(symbol, start=start_date, end=end_date, progress=False)
 
@@ -71,7 +71,7 @@ def fetch_and_load_data(**context):
             date_obj = idx.date()  
 
             # if db is empty we insert all rows or if row is newer than latest date
-            if (latest_date_in_db is None) or (date_obj > latest_date_in_db):
+            if (latest_date is None) or (date_obj > latest_date):
                 open_val = float(get_scalar(row["open"]))
                 close_val = float(get_scalar(row["close"]))
                 min_val = float(get_scalar(row["min"]))
@@ -110,8 +110,8 @@ def fetch_and_load_data(**context):
     cursor.close()
     conn.close
 
-# keep only last 180 days
-def cleanup_old_data(**context):
+# cleanup old data and keep only last 180 days
+def cu_data(**context):
     conn = snowflake.connector.connect(
         user=os.getenv('SNOWFLAKE_USER'),
         password=os.getenv('SNOWFLAKE_PASSWORD'),
@@ -162,13 +162,13 @@ with DAG(
 
     load_task = PythonOperator(
         task_id='load_data',
-        python_callable=fetch_and_load_data,
+        python_callable=fl_data,
         provide_context=True
     )
 
     cleanup_task = PythonOperator(
         task_id='cleanup_data',
-        python_callable=cleanup_old_data,
+        python_callable=cu_data,
         provide_context=True
     )
 
