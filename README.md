@@ -16,10 +16,10 @@ SNOWFLAKE_ACCOUNT=yourown
 (instead of yourown please put your own creditials)
 Snowflake account can be found here when you log in 
 
-![image](https://github.com/user-attachments/assets/5d69c23a-34e0-41dc-8657-5ddca3dc01a2)
-
+********THE SNOWFLAKE ACCOUNT CODE IS FOUND IN THE LINK AS SHOWN BELOW ITS BLURRED IN RED****
+<account_identifier>.snowflakecomputing.com
 <img width="1683" alt="image" src="https://github.com/user-attachments/assets/67261ddc-f045-4aec-ba00-f94d274a900a" />
-
+snowflake user and password is what you used to log in 
 
 You use the code provided that I lined out and put that code in SNOWFLAKE_ACCOUNT=
 
