@@ -5,14 +5,14 @@ USE DATABASE FINANCE_DB;
 USE SCHEMA ANALYTICS;
 
 CREATE TABLE IF NOT EXISTS FINANCE_DB.ANALYTICS.stock_prices (
-    stock_symbol STRING NOT NULL,  
     date DATE NOT NULL,
-    open FLOAT,
     close FLOAT,
-    min FLOAT,
-    max FLOAT,
+    high FLOAT,
+    low FLOAT,
+    open FLOAT,
     volume BIGINT,
-    PRIMARY KEY (stock_symbol, date) 
+    stock_symbol STRING NOT NULL,
+    PRIMARY KEY (stock_symbol, date)
 );
 
 SELECT * FROM FINANCE_DB.ANALYTICS.stock_prices; -- This gets stock prices of last 180 days for both stocks
