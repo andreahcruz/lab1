@@ -6,6 +6,14 @@ Steps to run code:
 Make sure to run the code in its own folder and not a folder inside a folder; Should look like this 
 <img width="337" alt="image" src="https://github.com/user-attachments/assets/1044147f-4b9c-490e-92b1-5ef80f7beeb6" />
 
+You also want to create your own .env as shown in the image above
+
+SNOWFLAKE_USER=yourown
+SNOWFLAKE_PASSWORD=yourown
+SNOWFLAKE_ACCOUNT=yourown
+
+(obviously instead of yourown please put your own creditials)
+Snowflake account 
 In vscode terminal run:
 
 docker-compose down (to make sure you reset it)
