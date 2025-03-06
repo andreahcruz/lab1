@@ -13,7 +13,12 @@ SNOWFLAKE_PASSWORD=yourown
 SNOWFLAKE_ACCOUNT=yourown
 
 (obviously instead of yourown please put your own creditials)
-Snowflake account 
+Snowflake account can be found here when you log in 
+
+![image](https://github.com/user-attachments/assets/5d69c23a-34e0-41dc-8657-5ddca3dc01a2)
+
+You use the code provided that I lined out and put that code in SNOWFLAKE_ACCOUNT=
+
 In vscode terminal run:
 
 docker-compose down (to make sure you reset it)
