@@ -16,7 +16,6 @@ default_args = {
 }
 
 def get_snowflake_connection():
-    
     # Establish a connection to Snowflake.
     conn = snowflake.connector.connect(
         user=os.getenv('SNOWFLAKE_USER'),
@@ -46,14 +45,14 @@ def save_stock_price_as_file(symbol, start_date, file_path):
     data.rename(columns={
         "Date": "date",
         "Open": "open",
-        "High": "high",
-        "Low": "low",
+        "High": "max",   # changed to match Snowflake table
+        "Low": "min",    # changed to match Snowflake table
         "Close": "close",
         "Volume": "volume"
     }, inplace=True)
 
     # make sure the table matches snowflake table
-    data = data[["date", "open", "high", "low", "close", "volume", "stock_symbol"]]
+    data = data[["stock_symbol", "date", "open", "close", "min", "max", "volume"]]
     data.to_csv(file_path, index=False)
 
 def populate_table_via_stage(conn, schema, table, file_path):
@@ -75,7 +74,7 @@ def populate_table_via_stage(conn, schema, table, file_path):
 
         # Run copy into command with fully qualified table name
         copy_sql = f"""
-            COPY INTO {schema}.{table}
+            COPY INTO {schema}.{table} (stock_symbol, date, open, close, min, max, volume)
             FROM @{stage_name}/{file_name}
             FILE_FORMAT = (
                 TYPE = 'CSV',
@@ -110,7 +109,7 @@ def fl_data(**context):
         # if table is empty fetch last 180 days
         if latest_date is None:
             start_date = datetime.today() - timedelta(days=180)
-        
+
         # fetch new data from the day after latest date 
         else:
             start_date = latest_date + timedelta(days=1)
