@@ -5,6 +5,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
+from airflow.hooks.base import BaseHook
 
 # default settings for DAG tasks
 default_args = {
@@ -16,14 +17,14 @@ default_args = {
 }
 
 def get_snowflake_connection():
-    # Establish a connection to Snowflake.
+    connection = BaseHook.get_connection("snowflake_conn")
     conn = snowflake.connector.connect(
-        user=os.getenv('SNOWFLAKE_USER'),
-        password=os.getenv('SNOWFLAKE_PASSWORD'),
-        account=os.getenv('SNOWFLAKE_ACCOUNT'),
-        warehouse="COMPUTE_WH",
-        database="FINANCE_DB",
-        schema="ANALYTICS"
+        user=connection.login,
+        password=connection.password,
+        account=connection.extra_dejson.get("account"),
+        warehouse=connection.extra_dejson.get("warehouse"),
+        database=connection.extra_dejson.get("database"),
+        schema=connection.schema
     )
     return conn
 
