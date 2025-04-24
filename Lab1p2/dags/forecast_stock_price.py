@@ -4,16 +4,18 @@ from airflow.decorators import task
 from datetime import datetime
 import os
 import snowflake.connector
+from airflow.hooks.base import BaseHook
+
 
 def get_snowflake_cursor():
-    # Establish a Snowflake connection using environment variables.
+    connection = BaseHook.get_connection("snowflake_conn")
     conn = snowflake.connector.connect(
-        user=os.getenv('SNOWFLAKE_USER'),
-        password=os.getenv('SNOWFLAKE_PASSWORD'),
-        account=os.getenv('SNOWFLAKE_ACCOUNT'),
-        warehouse="COMPUTE_WH",
-        database="FINANCE_DB",
-        schema="ANALYTICS"
+        user=connection.login,
+        password=connection.password,
+        account=connection.extra_dejson.get("account"),
+        warehouse=connection.extra_dejson.get("warehouse"),
+        database=connection.extra_dejson.get("database"),
+        schema=connection.schema
     )
     return conn.cursor()
 
